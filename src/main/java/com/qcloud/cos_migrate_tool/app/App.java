@@ -15,6 +15,7 @@ import com.qcloud.cos_migrate_tool.config.MigrateType;
 import com.qcloud.cos_migrate_tool.meta.TaskStatics;
 import com.qcloud.cos_migrate_tool.task.MigrateAliTaskExecutor;
 import com.qcloud.cos_migrate_tool.task.MigrateAwsTaskExecutor;
+import com.qcloud.cos_migrate_tool.task.MigrateBaiduTaskExecutor;
 import com.qcloud.cos_migrate_tool.task.MigrateCopyBucketTaskExecutor;
 import com.qcloud.cos_migrate_tool.task.MigrateLocalTaskExecutor;
 import com.qcloud.cos_migrate_tool.task.MigrateQiniuTaskExecutor;
@@ -32,6 +33,8 @@ public class App {
             return new MigrateAliTaskExecutor((CopyFromAliConfig) config);
         } else if (ConfigParser.instance.getMigrateType().equals(MigrateType.MIGRATE_FROM_AWS)) {
             return new MigrateAwsTaskExecutor((CopyFromAwsConfig) config);
+        } else if (ConfigParser.instance.getMigrateType().equals(MigrateType.MIGRATE_FROM_BAIDU)) {
+        		return new MigrateBaiduTaskExecutor((CopyFromAwsConfig) config);
         } else if (ConfigParser.instance.getMigrateType()
                 .equals(MigrateType.MIGRATE_FROM_COS_BUCKET_COPY)) {
             return new MigrateCopyBucketTaskExecutor((CopyBucketConfig) config);
